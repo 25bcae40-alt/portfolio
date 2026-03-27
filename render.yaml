@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: siva-portfolio
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend.server:app
