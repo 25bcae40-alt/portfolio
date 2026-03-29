@@ -38,3 +38,17 @@
 3. Deploy.
 
 > Note: Render free service can restart after inactivity. SQLite is ephemeral on free instances, so form entries may reset after redeploy/restart.
+
+## CI/CD (GitHub Actions)
+
+This repo includes `.github/workflows/ci-cd.yml`:
+
+- **CI**: runs on every push/PR. Installs Python deps and performs basic smoke checks.
+- **CD** (optional): on push to `main`, triggers a Render deploy hook if you add the secret.
+
+### Enable CD (optional)
+
+1. In Render, open your service → Settings → Deploy Hook → copy the hook URL.
+2. In GitHub repo → Settings → Secrets and variables → Actions → New repository secret:
+   - Name: `RENDER_DEPLOY_HOOK`
+   - Value: (paste Render deploy hook URL)
